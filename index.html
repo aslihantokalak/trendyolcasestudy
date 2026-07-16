@@ -1,4 +1,4 @@
-<title>Trendyol Ana Sayfa — Kupon Deneyimi Vaka Çalışması</title>
+<title>Trendyol Ana Sayfa: Kupon Deneyimi Vaka Çalışması</title>
 <style>
   :root {
     --paper: #EEF0EC;
@@ -538,7 +538,7 @@
     </div>
 
     <header class="hero">
-      <div class="eyebrow">◆ Spec work — kurgusal vaka çalışması</div>
+      <div class="eyebrow">◆ Spec work: kurgusal vaka çalışması</div>
       <h1>Trendyol ana sayfada kupon deneyimini yeniden tasarlamak</h1>
       <p class="lede">Uygulama açılışında beliren indirim kuponu pop-up'ı, ana sayfadaki ürün akışının önüne geçiyor. Bu çalışma, o sürtünmeyi kaldıracak bir yön öneriyor.</p>
       <div class="meta-row">
@@ -547,13 +547,13 @@
         <span class="meta-pill">Kapsam <b>Kupon sunum biçimi</b></span>
       </div>
       <div class="disclosure">
-        <b>Not:</b> Bu, Trendyol'da yürüttüğüm gerçek bir proje değil — portföyüm için hazırladığım bir spec çalışması. Problemi kendi kullanıcı deneyimimden yola çıkarak tanımladım, rakip taramasını bizzat yaptım. Sonuç bölümündeki rakamlar gerçek veri değil, varsayıma dayalı tahminler.
+        <b>Not:</b> Bu, Trendyol'da yürüttüğüm gerçek bir proje değil, portföyüm için hazırladığım bir spec çalışması. Problemi kendi kullanıcı deneyimimden yola çıkarak tanımladım, rakip taramasını bizzat yaptım. Sonuç bölümündeki rakamlar gerçek veri değil, varsayıma dayalı tahminler.
       </div>
     </header>
 
     <section id="baglam">
       <div class="sec-head"><span class="sec-num">01</span><h2>Bağlam</h2></div>
-      <p>Trendyol, Türkiye'nin en yüksek trafikli e-ticaret platformlarından biri. Mobil uygulama ana sayfası, kullanıcının markayla günlük ilk temas noktası — göz atma, arama ve ürün keşfinin başladığı yer.</p>
+      <p>Trendyol, Türkiye'nin en yüksek trafikli e-ticaret platformlarından biri. Mobil uygulama ana sayfası, kullanıcının markayla günlük ilk temas noktası: göz atma, arama ve ürün keşfinin başladığı yer.</p>
       <p>Bu çalışmada kendimi platformun <b>Ana Sayfa / Growth</b> ekibinde, ana sayfa etkileşim ve dönüşüm metriklerinden sorumlu bir PM olarak konumlandırıyorum.</p>
     </section>
 
@@ -561,7 +561,7 @@
       <div class="sec-head"><span class="sec-num">02</span><h2>Problem</h2></div>
       <p>Uygulama açıldığında, indirim kuponu tam veya yarı ekranı kaplayan bir pop-up olarak beliriyor ve ana sayfadaki ürün akışını geçici olarak gizliyor. Kullanıcı, siteye giriş amacını (göz atma, arama, ürün keşfi) karşılamadan önce bu pop-up'ı kapatmak zorunda kalıyor.</p>
 
-      <p>Bunun izole bir gözlem mi yoksa daha genel bir sorun mu olduğunu anlamak için <a href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Şikayetvar'da "pop up" araması yaptım</a> (8 sonuç). Kupona özel bir doğrulama çıkmadı ama doğrudan ilgili, tekrarlayan bir örüntü buldum: <b>Trendyol'un pop-up'ları, kullanıcının o anki niyetinin önüne kaçınılmaz bir engel olarak koyma eğiliminde</b> — farklı tarihlerde, farklı kullanıcılardan gelen dört ayrı şikayet aynı temaya işaret ediyor:</p>
+      <p>Bunun izole bir gözlem mi yoksa daha genel bir sorun mu olduğunu anlamak için <a href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Şikayetvar'da "pop up" araması yaptım</a> (8 sonuç). Kupona özel bir doğrulama çıkmadı ama doğrudan ilgili, tekrarlayan bir örüntü buldum: <b>Trendyol'un pop-up'ları, kullanıcının o anki niyetinin önüne kaçınılmaz bir engel olarak koyma eğiliminde.</b> Farklı tarihlerde, farklı kullanıcılardan gelen dört ayrı şikayet aynı temaya işaret ediyor:</p>
 
       <div class="evidence-list">
         <div class="evidence-item">
@@ -585,18 +585,18 @@
           <a class="evidence-link" href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Kaynak ↗</a>
         </div>
       </div>
-      <p style="font-size: 14.5px; color: var(--ink-soft);">Aynı taramada beşinci bir şikayet daha var (Elif, 4 Mayıs): kupon pop-up'ı "kuponu kazan" adımında hata veriyor. Bu farklı bir sorun — teknik bir bug — burada ele aldığım "içeriği gizleme" meselesiyle karıştırmıyorum.</p>
+      <p style="font-size: 14.5px; color: var(--ink-soft);">Aynı taramada beşinci bir şikayet daha var (Elif, 4 Mayıs): kupon pop-up'ı "kuponu kazan" adımında hata veriyor. Bu farklı bir sorun (teknik bir bug), burada ele aldığım "içeriği gizleme" meselesiyle karıştırmıyorum.</p>
 
       <div class="callout">
         <span class="tag">Varsayım</span>
-        <p>Genel örüntüyü (zorla çıkan, kaçınılmaz pop-up'lar) gerçek şikayetler destekliyor. Ama "bunun ana sayfadaki karşılığı indirim kuponu ve ürün akışını gizliyor" iddiası hâlâ kendi gözlemim — gerçek bir süreçte bunu oturum kaydı/funnel verisiyle (ör. ana sayfa bounce rate, pop-up kapatma anındaki çıkış oranı) doğrulardım.</p>
+        <p>Genel örüntüyü (zorla çıkan, kaçınılmaz pop-up'lar) gerçek şikayetler destekliyor. Ama "bunun ana sayfadaki karşılığı indirim kuponu ve ürün akışını gizliyor" iddiası hâlâ kendi gözlemim. Gerçek bir süreçte bunu oturum kaydı/funnel verisiyle (ör. ana sayfa bounce rate, pop-up kapatma anındaki çıkış oranı) doğrulardım.</p>
       </div>
       <p>Neden önemli: ana sayfa, dönüşüm hunisinin en üst noktası. Kullanıcının asıl niyetinin önüne geçen her sürtünme noktası, kısa vadeli kampanya görünürlüğünü kazandırırken ana sayfa terk oranını artırma riski taşıyor.</p>
     </section>
 
     <section id="rol">
       <div class="sec-head"><span class="sec-num">03</span><h2>Rol</h2></div>
-      <p><b>Ana Sayfa / Growth PM</b> (kurgusal). Bu rol; oturum başına ürün görüntüleme, ana sayfa bounce rate ve genel etkileşim metriklerinden sorumlu olurdu. Kuponun kendisi — indirim oranı, bütçe, hedef kitle — pazarlama/kampanya ekibinin sorumluluğunda kalır; bu çalışma yalnızca kuponun <b>sunum biçimini</b> ele alıyor, kupon stratejisini değil.</p>
+      <p><b>Ana Sayfa / Growth PM</b> (kurgusal). Bu rol; oturum başına ürün görüntüleme, ana sayfa bounce rate ve genel etkileşim metriklerinden sorumlu olurdu. Kuponun kendisi (indirim oranı, bütçe, hedef kitle) pazarlama/kampanya ekibinin sorumluluğunda kalır; bu çalışma yalnızca kuponun <b>sunum biçimini</b> ele alıyor, kupon stratejisini değil.</p>
     </section>
 
     <section id="surec">
@@ -614,7 +614,7 @@
           <span class="step-idx">2</span>
           <div>
             <h3>Kullanıcı şikayeti taraması</h3>
-            <p>Kişisel gözlemimle yetinmemek için Şikayetvar'da gerçek bir tarama yaptım (bkz. Problem bölümü). Kupona özel bir doğrulama çıkmadı ama "zorla çıkan pop-up" örüntüsünü gerçek şikayetlerle doğruladı — problem tanımını buna göre revize ettim.</p>
+            <p>Kişisel gözlemimle yetinmemek için Şikayetvar'da gerçek bir tarama yaptım (bkz. Problem bölümü). Kupona özel bir doğrulama çıkmadı ama "zorla çıkan pop-up" örüntüsünü gerçek şikayetlerle doğruladı. Problem tanımını buna göre revize ettim.</p>
           </div>
         </li>
         <li class="step">
@@ -645,13 +645,13 @@
                   </tr>
                   <tr>
                     <td>Getir</td>
-                    <td>Bu oturumda görülemedi — web girişi login gate'e takıldı</td>
+                    <td>Bu oturumda görülemedi (web girişi login gate'e takıldı)</td>
                     <td class="verdict-unknown">Belirsiz</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p style="font-size: 14.5px; color: var(--ink-soft); margin-top: -4px;">İncelenen üç platformdan ikisi, kupon/kampanya bilgisini sayfa akışını engellemeyen gömülü bir bileşenle sunuyor — bu, aşağıdaki çözüm yönü için doğrudan emsal oluşturuyor.</p>
+            <p style="font-size: 14.5px; color: var(--ink-soft); margin-top: -4px;">İncelenen üç platformdan ikisi, kupon/kampanya bilgisini sayfa akışını engellemeyen gömülü bir bileşenle sunuyor; bu, aşağıdaki çözüm yönü için doğrudan emsal oluşturuyor.</p>
           </div>
         </li>
         <li class="step">
@@ -672,7 +672,7 @@
                   <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
                   <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
                 </div>
-                <p class="mock-caption">Konsept taslak — gerçek ekran görüntüsü değil</p>
+                <p class="mock-caption">Konsept taslak, gerçek ekran görüntüsü değil</p>
               </div>
               <div class="mock-card">
                 <div class="mock-label">Önerilen (kurgusal)</div>
@@ -708,14 +708,14 @@
       <div class="sec-head"><span class="sec-num">05</span><h2>Sonuç <span style="font-size:16px; color:var(--ink-soft); font-family:var(--font-body); font-weight:400;">(projeksiyon)</span></h2></div>
       <div class="callout">
         <span class="tag">Not</span>
-        <p>Gerçek bir A/B test çalıştırmadım — aşağıdaki üç kart ölçüme değil, varsayıma dayalı akıl yürütmeye dayanıyor. Kesin oranlar ancak gerçek test verisiyle netleşir.</p>
+        <p>Gerçek bir A/B test çalıştırmadım. Aşağıdaki üç kart ölçüme değil, varsayıma dayalı akıl yürütmeye dayanıyor. Kesin oranlar ancak gerçek test verisiyle netleşir.</p>
       </div>
 
       <div class="proj-card">
         <div class="proj-head"><h3>Ana sayfa bounce rate</h3><span class="proj-direction">Beklenen yön: azalış</span></div>
         <dl>
           <div class="proj-row"><dt>Varsayım</dt><dd>Kullanıcıların bir kısmı, pop-up'ı kapatmadan ya da yanlış yere dokunup uygulamadan çıkıyor.</dd></div>
-          <div class="proj-row"><dt>Mantık</dt><dd>Engelleyici öğeyi kaldırmak, ürün akışına ulaşmadan çıkan kullanıcı payını azaltır — emsal platformlarda bu tür bloklayıcı öğe yok.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Engelleyici öğeyi kaldırmak, ürün akışına ulaşmadan çıkan kullanıcı payını azaltır; emsal platformlarda bu tür bloklayıcı öğe yok.</dd></div>
         </dl>
       </div>
 
@@ -731,7 +731,7 @@
         <div class="proj-head"><h3>Kupon kullanım oranı (guardrail)</h3><span class="proj-direction" style="color: var(--flag); border-color: color-mix(in srgb, var(--flag) 45%, transparent); background: var(--flag-tint);">Beklenen yön: belirsiz</span></div>
         <dl>
           <div class="proj-row"><dt>Varsayım</dt><dd>Banner, pop-up kadar göz önünde olmayabilir; bu metrik düşerse pazarlama ekibi için bir risk oluşturur.</dd></div>
-          <div class="proj-row"><dt>Mantık</dt><dd>Bu yüzden test planında bu metrik bir guardrail olarak izleniyor — birincil başarı kriteri değil ama düşüşe karşı bir alarm.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Bu yüzden test planında bu metrik bir guardrail olarak izleniyor: birincil başarı kriteri değil, düşüşe karşı bir alarm.</dd></div>
         </dl>
       </div>
       <p class="note-final">Gerçek bir süreçte bu üç projeksiyonu test öncesi bir hipotez seti olarak paylaşır, test sonrası gerçek sayılarla güncellerdim.</p>
