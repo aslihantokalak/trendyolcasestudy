@@ -1,0 +1,751 @@
+<title>Trendyol Ana Sayfa — Kupon Deneyimi Vaka Çalışması</title>
+<style>
+  :root {
+    --paper: #EEF0EC;
+    --paper-raised: #F8F9F6;
+    --ink: #171B19;
+    --ink-soft: #454E49;
+    --line: rgba(23, 27, 25, 0.14);
+    --line-strong: rgba(23, 27, 25, 0.28);
+    --accent: #1F5C58;
+    --accent-strong: #133D3A;
+    --accent-tint: rgba(31, 92, 88, 0.10);
+    --flag: #9C6B1E;
+    --flag-tint: rgba(156, 107, 30, 0.10);
+    --subject: #E8650F;
+    --subject-tint: rgba(232, 101, 15, 0.10);
+    --good: #1F5C58;
+
+    --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14100D;
+      --paper-raised: #1B1613;
+      --ink: #ECE8E1;
+      --ink-soft: #B3ACA1;
+      --line: rgba(236, 232, 225, 0.14);
+      --line-strong: rgba(236, 232, 225, 0.26);
+      --accent: #6FBDB4;
+      --accent-strong: #9BD6CE;
+      --accent-tint: rgba(111, 189, 180, 0.14);
+      --flag: #D9A44F;
+      --flag-tint: rgba(217, 164, 79, 0.14);
+      --subject: #F0864A;
+      --subject-tint: rgba(240, 134, 74, 0.14);
+      --good: #6FBDB4;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14100D;
+    --paper-raised: #1B1613;
+    --ink: #ECE8E1;
+    --ink-soft: #B3ACA1;
+    --line: rgba(236, 232, 225, 0.14);
+    --line-strong: rgba(236, 232, 225, 0.26);
+    --accent: #6FBDB4;
+    --accent-strong: #9BD6CE;
+    --accent-tint: rgba(111, 189, 180, 0.14);
+    --flag: #D9A44F;
+    --flag-tint: rgba(217, 164, 79, 0.14);
+    --subject: #F0864A;
+    --subject-tint: rgba(240, 134, 74, 0.14);
+    --good: #6FBDB4;
+  }
+  :root[data-theme="light"] {
+    --paper: #EEF0EC;
+    --paper-raised: #F8F9F6;
+    --ink: #171B19;
+    --ink-soft: #454E49;
+    --line: rgba(23, 27, 25, 0.14);
+    --line-strong: rgba(23, 27, 25, 0.28);
+    --accent: #1F5C58;
+    --accent-strong: #133D3A;
+    --accent-tint: rgba(31, 92, 88, 0.10);
+    --flag: #9C6B1E;
+    --flag-tint: rgba(156, 107, 30, 0.10);
+    --subject: #E8650F;
+    --subject-tint: rgba(232, 101, 15, 0.10);
+    --good: #1F5C58;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-strong); }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 720px);
+    gap: 56px;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 64px 24px 120px;
+    justify-content: center;
+  }
+
+  @media (max-width: 880px) {
+    .wrap { grid-template-columns: minmax(0, 1fr); padding-top: 32px; }
+    .toc { display: none; }
+    .toc-mobile { display: flex; }
+  }
+
+  /* ---- Sidebar TOC ---- */
+  .toc {
+    position: sticky;
+    top: 48px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .toc-kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .toc a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 14px;
+    padding: 7px 0 7px 14px;
+    border-left: 2px solid var(--line);
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .toc a:hover { color: var(--ink); border-left-color: var(--line-strong); }
+
+  .toc-mobile {
+    display: none;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-mobile a {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 12px;
+  }
+
+  /* ---- Header ---- */
+  header.hero {
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--flag);
+    background: var(--flag-tint);
+    border: 1px solid color-mix(in srgb, var(--flag) 40%, transparent);
+    border-radius: 999px;
+    padding: 5px 12px 5px 10px;
+    margin-bottom: 22px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+    max-width: 15ch;
+  }
+  .lede {
+    font-size: 18.5px;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0 0 26px;
+  }
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .meta-pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 10px;
+  }
+  .meta-pill b { color: var(--ink); font-weight: 600; }
+
+  .disclosure {
+    margin-top: 28px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--flag);
+    border-radius: 4px;
+    padding: 16px 18px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .disclosure b { color: var(--ink); }
+
+  /* ---- Sections ---- */
+  section { margin-bottom: 64px; scroll-margin-top: 40px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .sec-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 27px;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 650;
+    font-size: 16px;
+    margin: 0 0 8px;
+  }
+  p { margin: 0 0 16px; max-width: 66ch; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; max-width: 62ch; }
+  li { margin-bottom: 8px; }
+
+  .callout {
+    display: flex;
+    gap: 12px;
+    background: var(--flag-tint);
+    border: 1px solid color-mix(in srgb, var(--flag) 35%, transparent);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 20px 0;
+    max-width: 62ch;
+  }
+  .callout .tag {
+    flex: 0 0 auto;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--flag);
+    border: 1px solid color-mix(in srgb, var(--flag) 45%, transparent);
+    border-radius: 4px;
+    padding: 3px 7px;
+    height: fit-content;
+    white-space: nowrap;
+  }
+  .callout p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+  /* ---- Evidence list ---- */
+  .evidence-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0 16px;
+  }
+  @media (max-width: 620px) { .evidence-list { grid-template-columns: 1fr; } }
+  .evidence-item {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--subject);
+    border-radius: 4px;
+    background: var(--paper-raised);
+    padding: 13px 15px;
+  }
+  .evidence-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .evidence-author { font-weight: 650; font-size: 13.5px; }
+  .evidence-date { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
+  .evidence-item p { font-size: 13.5px; color: var(--ink-soft); margin: 0 0 8px; }
+  .evidence-link { font-family: var(--font-mono); font-size: 11.5px; text-decoration: none; }
+
+  /* ---- Process steps ---- */
+  .steps { list-style: none; margin: 0; padding: 0; max-width: none; }
+  .step {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 14px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step:last-child { border-bottom: 1px solid var(--line); }
+  .step-idx {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 2px;
+  }
+
+  /* ---- Competitor table ---- */
+  .table-scroll { overflow-x: auto; margin: 8px 0 24px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  td.verdict-blocks { color: var(--subject); font-weight: 600; }
+  td.verdict-clear { color: var(--good); font-weight: 600; }
+  td.verdict-unknown { color: var(--ink-soft); font-style: italic; }
+
+  /* ---- Concept mockups ---- */
+  .mock-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 28px 0 8px;
+  }
+  @media (max-width: 560px) { .mock-row { grid-template-columns: 1fr; } }
+  .mock-card { text-align: center; }
+  .mock-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .phone {
+    position: relative;
+    width: 100%;
+    max-width: 210px;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    background: var(--paper-raised);
+    border: 1.5px solid var(--line-strong);
+    border-radius: 16px;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .phone .searchbar {
+    height: 16px;
+    border-radius: 5px;
+    background: var(--line);
+    flex: 0 0 auto;
+  }
+  .grid-row { display: flex; gap: 6px; flex: 1; }
+  .grid-card {
+    flex: 1;
+    border-radius: 5px;
+    background: var(--line);
+  }
+  .popup-overlay {
+    position: absolute;
+    inset: 30px 14px;
+    background: var(--paper);
+    border: 1.5px dashed var(--subject);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+  .popup-overlay .x {
+    position: absolute;
+    top: 8px; right: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .popup-overlay .badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--subject);
+    border: 1px solid var(--subject);
+    border-radius: 4px;
+    padding: 2px 7px;
+  }
+  .popup-overlay .sub { font-size: 9.5px; color: var(--ink-soft); padding: 0 14px; text-align: center; }
+  .inline-banner {
+    flex: 0 0 auto;
+    height: 30px;
+    border-radius: 6px;
+    border: 1.5px solid var(--accent);
+    background: var(--accent-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--accent-strong);
+    letter-spacing: 0.02em;
+  }
+  .mock-caption {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---- A/B plan ---- */
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+  }
+  @media (max-width: 560px) { .plan-grid { grid-template-columns: 1fr; } }
+  .plan-card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    background: var(--paper-raised);
+  }
+  .plan-card .k {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .plan-card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+  /* ---- Outcome / projection cards ---- */
+  .proj-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    background: var(--paper-raised);
+  }
+  .proj-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .proj-head h3 { margin: 0; font-size: 16px; }
+  .proj-direction {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--good);
+    border: 1px solid color-mix(in srgb, var(--good) 45%, transparent);
+    background: var(--accent-tint);
+    border-radius: 999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .proj-row { display: grid; grid-template-columns: 110px 1fr; gap: 4px 14px; font-size: 14.5px; }
+  .proj-row + .proj-row { margin-top: 8px; }
+  .proj-row dt { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ink-soft); letter-spacing: 0.04em; padding-top: 2px; }
+  .proj-row dd { margin: 0; color: var(--ink); }
+  .proj-card dl { margin: 0; }
+
+  .note-final {
+    font-size: 14px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    margin-top: 8px;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+</style>
+
+<div class="wrap">
+  <nav class="toc">
+    <div class="toc-kicker">İçindekiler</div>
+    <a href="#baglam">Bağlam</a>
+    <a href="#problem">Problem</a>
+    <a href="#rol">Rol</a>
+    <a href="#surec">Süreç</a>
+    <a href="#sonuc">Sonuç</a>
+    <a href="#ogrenim">Öğrenim</a>
+  </nav>
+
+  <main>
+    <div class="toc-mobile">
+      <a href="#baglam">Bağlam</a>
+      <a href="#problem">Problem</a>
+      <a href="#rol">Rol</a>
+      <a href="#surec">Süreç</a>
+      <a href="#sonuc">Sonuç</a>
+      <a href="#ogrenim">Öğrenim</a>
+    </div>
+
+    <header class="hero">
+      <div class="eyebrow">◆ Spec work — kurgusal vaka çalışması</div>
+      <h1>Trendyol ana sayfada kupon deneyimini yeniden tasarlamak</h1>
+      <p class="lede">Uygulama açılışında beliren indirim kuponu pop-up'ı, ana sayfadaki ürün akışının önüne geçiyor. Bu çalışma, o sürtünmeyi kaldıracak bir yön öneriyor.</p>
+      <div class="meta-row">
+        <span class="meta-pill">Platform <b>Trendyol mobil app</b></span>
+        <span class="meta-pill">Rol <b>Ana Sayfa / Growth PM (kurgusal)</b></span>
+        <span class="meta-pill">Kapsam <b>Kupon sunum biçimi</b></span>
+      </div>
+      <div class="disclosure">
+        <b>Şeffaflık notu:</b> Bu, gerçek bir istihdam deneyimine değil, portföy amaçlı kurgusal (spec work) bir PM vaka çalışmasına dayanır. Problem tanımı kişisel kullanıcı gözlemine dayanıyor; rakip taraması bu çalışma için canlı olarak yapıldı; sonuç bölümündeki rakamlar gerçek değil, açıkça etiketlenmiş projeksiyonlardır.
+      </div>
+    </header>
+
+    <section id="baglam">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Bağlam</h2></div>
+      <p>Trendyol, Türkiye'nin en yüksek trafikli e-ticaret platformlarından biri. Mobil uygulama ana sayfası, kullanıcının markayla günlük ilk temas noktası — göz atma, arama ve ürün keşfinin başladığı yer.</p>
+      <p>Bu vaka çalışmasında varsayılan konum: platformun <b>Ana Sayfa / Growth</b> ekibinde çalışan, ana sayfa etkileşim ve dönüşüm metriklerinden sorumlu bir PM.</p>
+    </section>
+
+    <section id="problem">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Problem</h2></div>
+      <p>Uygulama açıldığında, indirim kuponu tam veya yarı ekranı kaplayan bir pop-up olarak beliriyor ve ana sayfadaki ürün akışını geçici olarak gizliyor. Kullanıcı, siteye giriş amacını (göz atma, arama, ürün keşfi) karşılamadan önce bu pop-up'ı kapatmak zorunda kalıyor.</p>
+
+      <p>Bunun izole bir gözlem olup olmadığını anlamak için <a href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Şikayetvar'da "pop up" anahtar kelimesiyle bir tarama yapıldı</a> (8 sonuç). Sonuç, kupona özel değil ama doğrudan ilgili, tekrarlayan bir örüntü ortaya koydu: <b>Trendyol'un pop-up'ları, kullanıcının o anki niyetinin önüne kaçınılmaz bir engel olarak koyma eğiliminde</b> — farklı tarihlerde, farklı kullanıcılardan gelen dört ayrı şikayet aynı temaya işaret ediyor:</p>
+
+      <div class="evidence-list">
+        <div class="evidence-item">
+          <div class="evidence-meta"><span class="evidence-author">Ali</span><span class="evidence-date">19 Mayıs</span></div>
+          <p>Trendyol Plus üyelik ücreti ödemesine rağmen, uygulamayı her açışında pop-up reklam çıkmasından şikayetçi.</p>
+          <a class="evidence-link" href="https://www.sikayetvar.com/trendyol/trendyol-plus-uyeliginde-reklamsiz-kullanim-talebi" target="_blank" rel="noopener">Kaynak ↗</a>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-meta"><span class="evidence-author">Sky</span><span class="evidence-date">4 Haziran 2025</span></div>
+          <p>Uygulamayı her açtığında zorla çıkan "bildirimleri aç" pop-up'ını "kullanıcıya baskı" olarak nitelendiriyor.</p>
+          <a class="evidence-link" href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Kaynak ↗</a>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-meta"><span class="evidence-author">Sıla</span><span class="evidence-date">13 Mayıs 2025</span></div>
+          <p>Sepette çıkan bir pop-up üzerinden, onayı dışında Trendyol Plus'a abone edildiğini belirtiyor.</p>
+          <a class="evidence-link" href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Kaynak ↗</a>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-meta"><span class="evidence-author">Cihan</span><span class="evidence-date">9 Nisan 2025</span></div>
+          <p>Ücretli "Pass" hizmetinin her satın almada pop-up ile yanıltıcı şekilde sunulduğunu anlatıyor.</p>
+          <a class="evidence-link" href="https://www.sikayetvar.com/trendyol?k=pop%20up" target="_blank" rel="noopener">Kaynak ↗</a>
+        </div>
+      </div>
+      <p style="font-size: 14.5px; color: var(--ink-soft);">Aynı taramada beşinci bir şikayet daha var (Elif, 4 Mayıs): kupon pop-up'ının "kuponu kazan" adımında hata vermesi. Bu farklı bir sorun — teknik bir bug — ve burada ele alınan "içeriği gizleme" sorunuyla karıştırılmamalı.</p>
+
+      <div class="callout">
+        <span class="tag">Varsayım</span>
+        <p>Genel örüntü (zorla çıkan, kaçınılmaz pop-up'lar) gerçek kullanıcı şikayetleriyle destekleniyor. Ancak "bunun ana sayfadaki somut biçimi indirim kuponudur ve ürün akışını gizler" iddiası hâlâ kişisel kullanıcı gözlemine dayanıyor — gerçek bir PM süreci bunu oturum kaydı/funnel verisiyle (ör. ana sayfa bounce rate, pop-up kapatma anındaki çıkış oranı) doğrulardı.</p>
+      </div>
+      <p>Neden önemli: ana sayfa, dönüşüm hunisinin en üst noktası. Kullanıcının asıl niyetinin önüne geçen her sürtünme noktası, kısa vadeli kampanya görünürlüğünü kazandırırken ana sayfa terk oranını artırma riski taşıyor.</p>
+    </section>
+
+    <section id="rol">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Rol</h2></div>
+      <p><b>Ana Sayfa / Growth PM</b> (kurgusal). Bu rol; oturum başına ürün görüntüleme, ana sayfa bounce rate ve genel etkileşim metriklerinden sorumlu olurdu. Kuponun kendisi — indirim oranı, bütçe, hedef kitle — pazarlama/kampanya ekibinin sorumluluğunda kalır; bu çalışma yalnızca kuponun <b>sunum biçimini</b> ele alıyor, kupon stratejisini değil.</p>
+    </section>
+
+    <section id="surec">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Süreç</h2></div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-idx">1</span>
+          <div>
+            <h3>Hipotez oluşturma</h3>
+            <p>Gözlem bir hipoteze dönüştürüldü: "Ana sayfayı bloke eden bir kupon pop-up'ı, etkileşimi (ürün görüntüleme, arama başlatma) düşürüyor olabilir; kuponu engellemeyen bir biçimde sunmak hem kampanya görünürlüğünü hem de ana sayfa sağlığını koruyabilir."</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-idx">2</span>
+          <div>
+            <h3>Kullanıcı şikayeti taraması</h3>
+            <p>Kişisel gözlemi tek başına bırakmamak için Şikayetvar'da gerçek bir tarama yapıldı (bkz. Problem bölümü). Sonuç, kupona özel bir doğrulama getirmedi ama "zorla çıkan pop-up" örüntüsünü gerçek şikayetlerle destekledi — problem tanımı buna göre revize edildi.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-idx">3</span>
+          <div>
+            <h3>Rakip / emsal taraması</h3>
+            <p>Bu çalışma için Hepsiburada ve Amazon.com.tr canlı olarak incelendi (temiz, oturum açılmamış tarayıcı ile). Getir'in web girişi bir login gate'e takıldığı için ana sayfası bu oturumda incelenemedi.</p>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr><th>Platform</th><th>Kupon / kampanya sunum biçimi</th><th>Ana sayfa akışını engelliyor mu?</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Trendyol <span style="color:var(--ink-soft); font-size:12.5px;">(gözlem)</span></td>
+                    <td>Açılışta tam/yarı ekran pop-up</td>
+                    <td class="verdict-blocks">Evet</td>
+                  </tr>
+                  <tr>
+                    <td>Hepsiburada</td>
+                    <td>İkon grid + banner carousel, sayfa akışına gömülü</td>
+                    <td class="verdict-clear">Hayır</td>
+                  </tr>
+                  <tr>
+                    <td>Amazon.com.tr</td>
+                    <td>"250 TL kupon" mesajı hero banner carousel'in içinde</td>
+                    <td class="verdict-clear">Hayır</td>
+                  </tr>
+                  <tr>
+                    <td>Getir</td>
+                    <td>Bu oturumda görülemedi — web girişi login gate'e takıldı</td>
+                    <td class="verdict-unknown">Belirsiz</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: 14.5px; color: var(--ink-soft); margin-top: -4px;">İncelenen üç platformdan ikisi, kupon/kampanya bilgisini sayfa akışını engellemeyen gömülü bir bileşenle sunuyor — bu, aşağıdaki çözüm yönü için doğrudan emsal oluşturuyor.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-idx">4</span>
+          <div>
+            <h3>Çözüm yönü</h3>
+            <p>Pop-up'ı, ana sayfa akışına gömülü, kapatılabilir ama <i>engellemeyen</i> bir bileşene (üst banner / kart) dönüştürmek. Kullanıcı ürün akışını hiç görmeden bir karar vermek zorunda kalmıyor; kupon hâlâ göze çarpıyor ama kaçırılamaz bir engel değil.</p>
+            <div class="mock-row">
+              <div class="mock-card">
+                <div class="mock-label">Mevcut (gözlemlenen)</div>
+                <div class="phone">
+                  <div class="searchbar"></div>
+                  <div class="popup-overlay">
+                    <span class="x">✕</span>
+                    <span class="badge">KUPON</span>
+                    <span class="sub">Tüm ekranı kaplıyor,<br/>ürün akışı arkada gizli</span>
+                  </div>
+                  <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
+                  <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
+                </div>
+                <p class="mock-caption">Konsept taslak — gerçek ekran görüntüsü değil</p>
+              </div>
+              <div class="mock-card">
+                <div class="mock-label">Önerilen (kurgusal)</div>
+                <div class="phone">
+                  <div class="searchbar"></div>
+                  <div class="inline-banner">KUPONLARIN BURADA →</div>
+                  <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
+                  <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
+                  <div class="grid-row"><div class="grid-card"></div><div class="grid-card"></div></div>
+                </div>
+                <p class="mock-caption">Ürün akışı görünür kalıyor, kupon bir üst şerit</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-idx">5</span>
+          <div>
+            <h3>Test planı</h3>
+            <p>Değişikliğin varsayımı doğrulayıp doğrulamadığını ölçmek için bir A/B test tasarımı:</p>
+            <div class="plan-grid">
+              <div class="plan-card"><span class="k">Kontrol</span><p>Mevcut tam/yarı ekran kupon pop-up'ı</p></div>
+              <div class="plan-card"><span class="k">Varyant</span><p>Ana sayfa akışına gömülü kupon banner'ı</p></div>
+              <div class="plan-card"><span class="k">Birincil metrik</span><p>Ana sayfa bounce rate, oturum başına ürün görüntüleme</p></div>
+              <div class="plan-card"><span class="k">Guardrail metrik</span><p>Kupon görüntülenme→kullanım oranı düşmemeli (pazarlama önceliği)</p></div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sonuc">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Sonuç <span style="font-size:16px; color:var(--ink-soft); font-family:var(--font-body); font-weight:400;">(projeksiyon)</span></h2></div>
+      <div class="callout">
+        <span class="tag">Not</span>
+        <p>Bu kurgusal bir proje olduğu için gerçek bir A/B test sonucu yok. Aşağıdaki üç kart, gerçek ölçüme değil, belirtilen varsayımlara dayanan akıl yürütmedir — kesin oranlar ancak gerçek test verisiyle doğrulanabilir.</p>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><h3>Ana sayfa bounce rate</h3><span class="proj-direction">Beklenen yön: azalış</span></div>
+        <dl>
+          <div class="proj-row"><dt>Varsayım</dt><dd>Kullanıcıların bir kısmı, pop-up'ı kapatmadan ya da yanlış yere dokunup uygulamadan çıkıyor.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Engelleyici öğeyi kaldırmak, ürün akışına ulaşmadan çıkan kullanıcı payını azaltır — emsal platformlarda bu tür bloklayıcı öğe yok.</dd></div>
+        </dl>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><h3>Oturum başına ürün görüntüleme</h3><span class="proj-direction">Beklenen yön: artış</span></div>
+        <dl>
+          <div class="proj-row"><dt>Varsayım</dt><dd>Ürün akışına daha hızlı ulaşan kullanıcı, oturum içinde daha fazla ürünle karşılaşır.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Sürtünme noktası kaldırıldığında, akışa giriş anı erkene çekilir; bu da keşif için daha fazla zaman/alan bırakır.</dd></div>
+        </dl>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head"><h3>Kupon kullanım oranı (guardrail)</h3><span class="proj-direction" style="color: var(--flag); border-color: color-mix(in srgb, var(--flag) 45%, transparent); background: var(--flag-tint);">Beklenen yön: belirsiz</span></div>
+        <dl>
+          <div class="proj-row"><dt>Varsayım</dt><dd>Banner, pop-up kadar göz önünde olmayabilir; bu metrik düşerse pazarlama ekibi için bir risk oluşturur.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Bu yüzden test planında bu metrik bir guardrail olarak izleniyor — birincil başarı kriteri değil ama düşüşe karşı bir alarm.</dd></div>
+        </dl>
+      </div>
+      <p class="note-final">Gerçek bir PM sürecinde, bu üç projeksiyon test öncesi bir hipotez seti olarak paylaşılır; test sonrası gerçek sayılarla güncellenir.</p>
+    </section>
+
+    <section id="ogrenim">
+      <div class="sec-head"><span class="sec-num">06</span><h2>Öğrenim</h2></div>
+      <p><b>1. Kısa vadeli kampanya hedefi ile uzun vadeli ana sayfa sağlığı arasında gerilim olabilir.</b> Kuponu göze çarpan bir yere koymak kampanya için mantıklı bir istek; ama bunu engelleyici bir biçimde yapmak, ana sayfanın asıl işini (keşif, dönüşüm) riske atabilir. PM'in işi bu ikisini birbirine karşı oynamak değil, aynı anda çalışan bir sunum biçimi bulmak.</p>
+      <p><b>2. Rakip/emsal taramasını sürecin en başına almak, çözüm yönünü hızlandırdı.</b> Tasarım tartışmasına girmeden önce "bu problem sektörde nasıl çözülüyor" sorusunu sormak, gereksiz keşif turlarını önledi ve çözüm önerisini varsayımdan çıkarıp somut emsallere dayandırdı.</p>
+      <p><b>3. Kişisel gözlemi gerçek kullanıcı verisiyle çapraz kontrol etmek, problemi güçlendirdi ama aynı zamanda kapsamını daraltmayı gerektirdi.</b> Şikayetvar taraması "kupon pop-up'ı ürünleri gizliyor" iddiasını birebir doğrulamadı; bunun yerine daha geniş bir "zorla çıkan pop-up" örüntüsü ortaya çıkardı. Doğru tepki, veriyi orijinal iddiaya zorlamak değil, iddiayı verinin gerçekten gösterdiği şeye göre yeniden çerçevelemekti.</p>
+    </section>
+
+    <footer>
+      Spec work case study · Trendyol ana sayfa kupon deneyimi · [adını / portföy linkini buraya ekle]
+    </footer>
+  </main>
+</div>
