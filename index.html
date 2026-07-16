@@ -521,6 +521,7 @@
     <div class="toc-kicker">İçindekiler</div>
     <a href="#baglam">Bağlam</a>
     <a href="#problem">Problem</a>
+    <a href="#karsit-hipotez">Karşıt Hipotez</a>
     <a href="#rol">Rol</a>
     <a href="#surec">Süreç</a>
     <a href="#sonuc">Sonuç</a>
@@ -531,6 +532,7 @@
     <div class="toc-mobile">
       <a href="#baglam">Bağlam</a>
       <a href="#problem">Problem</a>
+      <a href="#karsit-hipotez">Karşıt Hipotez</a>
       <a href="#rol">Rol</a>
       <a href="#surec">Süreç</a>
       <a href="#sonuc">Sonuç</a>
@@ -594,13 +596,24 @@
       <p>Neden önemli: ana sayfa, dönüşüm hunisinin en üst noktası. Kullanıcının asıl niyetinin önüne geçen her sürtünme noktası, kısa vadeli kampanya görünürlüğünü kazandırırken ana sayfa terk oranını artırma riski taşıyor.</p>
     </section>
 
+    <section id="karsit-hipotez">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Karşıt Hipotez</h2></div>
+      <p>Buraya kadarki akıl yürütme bir varsayıma dayanıyor: popup'ı kaldırmak net bir kazanç olur. Ama tam tersi de mümkün. Trendyol bu popup'ı tam da işe yaradığı için kullanıyor olabilir.</p>
+      <p>Zorlayıcı arayüz kalıpları genelde şikayet toplar ama aynı zamanda ölçüldükleri metriği de yükseltir, çünkü şikayet eden küçük ve gürültülü bir azınlıktır; metriği hareket ettiren geniş kitleyle aynı grup olmak zorunda değildir. Bir şirket, memnuniyet düşerken bile kupon kullanım oranı ya da uygulama açma sıklığı arttığı için "rahatsız edici" bir kalıbı bilinçli olarak koruyabilir.</p>
+      <div class="callout">
+        <span class="tag">Varsayım</span>
+        <p>Bunun Trendyol'da gerçekten böyle olup olmadığına dair hiçbir iç veriye erişimim yok. Karşıt hipotez, benim orijinal hipotezim kadar makul; elimde ikisini ayırt edecek veri yok.</p>
+      </div>
+      <p>Bu, önerilen çözümü geçersiz kılmıyor ama riskin yerini değiştiriyor. Asıl soru "popup rahatsız edici mi?" değil, "popup'ın rahatsız ediciliği sağladığı kazanımdan daha mı pahalı?" Bunun cevabı tasarımda değil veride, bu yüzden test planında kupon kullanım oranını yalnızca bir guardrail değil, ana sayfa bounce rate'iyle eşit ağırlıkta bir metrik olarak izlerdim. Test sonucunda kupon kullanım oranı belirgin şekilde düşerse, bu tasarımı göndermezdim.</p>
+    </section>
+
     <section id="rol">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Rol</h2></div>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Rol</h2></div>
       <p><b>Ana Sayfa / Growth PM</b> (kurgusal). Bu rol; oturum başına ürün görüntüleme, ana sayfa bounce rate ve genel etkileşim metriklerinden sorumlu olurdu. Kuponun kendisi (indirim oranı, bütçe, hedef kitle) pazarlama/kampanya ekibinin sorumluluğunda kalır; bu çalışma yalnızca kuponun <b>sunum biçimini</b> ele alıyor, kupon stratejisini değil.</p>
     </section>
 
     <section id="surec">
-      <div class="sec-head"><span class="sec-num">04</span><h2>Süreç</h2></div>
+      <div class="sec-head"><span class="sec-num">05</span><h2>Süreç</h2></div>
 
       <ol class="steps">
         <li class="step">
@@ -697,7 +710,7 @@
               <div class="plan-card"><span class="k">Kontrol</span><p>Mevcut tam/yarı ekran kupon pop-up'ı</p></div>
               <div class="plan-card"><span class="k">Varyant</span><p>Ana sayfa akışına gömülü kupon banner'ı</p></div>
               <div class="plan-card"><span class="k">Birincil metrik</span><p>Ana sayfa bounce rate, oturum başına ürün görüntüleme</p></div>
-              <div class="plan-card"><span class="k">Guardrail metrik</span><p>Kupon görüntülenme→kullanım oranı düşmemeli (pazarlama önceliği)</p></div>
+              <div class="plan-card"><span class="k">Eş-birincil metrik</span><p>Kupon görüntülenme→kullanım oranı (bkz. Karşıt Hipotez, sadece guardrail değil)</p></div>
             </div>
           </div>
         </li>
@@ -705,7 +718,7 @@
     </section>
 
     <section id="sonuc">
-      <div class="sec-head"><span class="sec-num">05</span><h2>Sonuç <span style="font-size:16px; color:var(--ink-soft); font-family:var(--font-body); font-weight:400;">(projeksiyon)</span></h2></div>
+      <div class="sec-head"><span class="sec-num">06</span><h2>Sonuç <span style="font-size:16px; color:var(--ink-soft); font-family:var(--font-body); font-weight:400;">(projeksiyon)</span></h2></div>
       <div class="callout">
         <span class="tag">Not</span>
         <p>Gerçek bir A/B test çalıştırmadım. Aşağıdaki üç kart ölçüme değil, varsayıma dayalı akıl yürütmeye dayanıyor. Kesin oranlar ancak gerçek test verisiyle netleşir.</p>
@@ -728,17 +741,17 @@
       </div>
 
       <div class="proj-card">
-        <div class="proj-head"><h3>Kupon kullanım oranı (guardrail)</h3><span class="proj-direction" style="color: var(--flag); border-color: color-mix(in srgb, var(--flag) 45%, transparent); background: var(--flag-tint);">Beklenen yön: belirsiz</span></div>
+        <div class="proj-head"><h3>Kupon kullanım oranı (eş-birincil)</h3><span class="proj-direction" style="color: var(--flag); border-color: color-mix(in srgb, var(--flag) 45%, transparent); background: var(--flag-tint);">Beklenen yön: belirsiz</span></div>
         <dl>
-          <div class="proj-row"><dt>Varsayım</dt><dd>Banner, pop-up kadar göz önünde olmayabilir; bu metrik düşerse pazarlama ekibi için bir risk oluşturur.</dd></div>
-          <div class="proj-row"><dt>Mantık</dt><dd>Bu yüzden test planında bu metrik bir guardrail olarak izleniyor: birincil başarı kriteri değil, düşüşe karşı bir alarm.</dd></div>
+          <div class="proj-row"><dt>Varsayım</dt><dd>Banner, pop-up kadar göz önünde olmayabilir. Karşıt hipotez doğruysa (popup'ın rahatsızlığı tam da bu oranı yükselten şey ise) bu metrik düşer.</dd></div>
+          <div class="proj-row"><dt>Mantık</dt><dd>Bu yüzden bu metriği bir guardrail'e indirgemedim, bounce rate'le eşit ağırlıkta izliyorum. Belirgin düşüş varsa tasarımı göndermem.</dd></div>
         </dl>
       </div>
       <p class="note-final">Gerçek bir süreçte bu üç projeksiyonu test öncesi bir hipotez seti olarak paylaşır, test sonrası gerçek sayılarla güncellerdim.</p>
     </section>
 
     <section id="ogrenim">
-      <div class="sec-head"><span class="sec-num">06</span><h2>Öğrenim</h2></div>
+      <div class="sec-head"><span class="sec-num">07</span><h2>Öğrenim</h2></div>
       <p><b>1. Kısa vadeli kampanya hedefi ile uzun vadeli ana sayfa sağlığı arasında gerilim olabilir.</b> Kuponu göze çarpan bir yere koymak kampanya için mantıklı bir istek; ama bunu engelleyici bir biçimde yapmak, ana sayfanın asıl işini (keşif, dönüşüm) riske atabilir. PM'in işi bu ikisini birbirine karşı oynamak değil, aynı anda çalışan bir sunum biçimi bulmak.</p>
       <p><b>2. Rakip/emsal taramasını sürecin en başına almak, çözüm yönünü hızlandırdı.</b> Tasarım tartışmasına girmeden önce "bu problem sektörde nasıl çözülüyor" sorusunu sormak, gereksiz keşif turlarını önledi ve çözüm önerisini varsayımdan çıkarıp somut emsallere dayandırdı.</p>
       <p><b>3. Kişisel gözlemimi gerçek kullanıcı verisiyle çapraz kontrol etmek problemi güçlendirdi ama kapsamını daraltmamı gerektirdi.</b> Şikayetvar taraması "kupon pop-up'ı ürünleri gizliyor" iddiasını birebir doğrulamadı; bunun yerine daha geniş bir "zorla çıkan pop-up" örüntüsü ortaya çıkardı. Veriyi orijinal iddiama zorlamak yerine, iddiayı verinin gösterdiğine göre yeniden çerçevelemem gerekti.</p>
